@@ -1,0 +1,67 @@
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+  <div class="animal" id="app">
+    <h1>模拟Vue之获取动物图片</h1>
+    <div class="animal-form">
+      <div class="info" tst>您要搜索的动物为：{{ name }}，您已获取了{{ count }}次</div>
+      <span>动物名称：</span>
+      <input v-model="name" />
+      <button id="button">获取</button>
+    </div>
+    <img class="animal-img" v-if="showAnimal === '猫'" src="./img/cat.jpg" alt="" />
+    <img class="animal-img" v-if="showAnimal === '狗'" src="./img/dog.jpg" alt="" />
+  </div>
+</body>
+
+<script src="./vue-underline/observer.js"></script>
+<script src="./vue-underline/Watcher.js"></script>
+<script src="./vue-underline/Compile.js"></script>
+<script src="./vue-underline/SelfVue.js"></script>
+
+<script>
+  let data = {
+    name: '',
+    count: 0,
+    img: '',
+    showAnimal: '',
+  }
+  var selfVue = new SelfVue({
+    el: '#app',
+    data
+  });
+  let btnDom = document.querySelector('#button');
+  btnDom.onclick = function() {
+    selfVue.count += 1;
+    selfVue.showAnimal = selfVue.name;
+  }
+</script>
+
+<style scoped>
+.animal {
+  padding: 50px 10px;
+}
+h1 {
+  text-align: center;
+}
+h3 {
+  text-align: center;
+}
+.info[tst] {
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+.animal-form {
+  display: table;
+  margin: auto;
+}
+.animal-img {
+  margin-top: 20px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 430px;
+  height: 500px;
+}
+</style>

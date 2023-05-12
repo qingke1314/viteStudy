@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>margin负值</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .head {
+        height: 10vh;
+      }
+      .foot {
+        height: 10vh;
+      }
+      .left,
+      .right {
+        float: left;
+        width: 200px;
+        height: 100%;
+        background-color: #eee;
+      }
+      .left {
+        margin-left: -100%;
+      }
+      .right {
+        margin-left: -200px;
+      }
+      .main {
+        height: 80vh;
+      }
+      .main::after {
+        content: '';
+        clear: both;
+      }
+      .content {
+        height: 100%;
+        float: left;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 200px;
+        background-color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="head"></div>
+    <div class="main">
+      <div class="content"></div>
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+    <div class="foot">
+    </div>
+  </body>
+</html>
