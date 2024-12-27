@@ -1,8 +1,9 @@
 <template>
   <div>
     <div style="color: red;">{{ messageArr }}</div>
-    <el-button @click="handleClick">push</el-button>
+    <el-button type="primary" @click="handleClick">push</el-button>
     <el-button @click="handleChange">change</el-button>
+    <el-button @click="handleChangeLanguage">修改语言包</el-button>
   </div>
 </template>
 <script>
@@ -25,6 +26,13 @@ export default {
       // this.messageArr[0] = Math.floor(Math.random() * 100) // 不生效
       // this.messageArr.splice(0, 1) // 生效
       // this.messageArr.length = 1 // 不生效
+    },
+    /**
+     * 修改语言包
+     */
+    handleChangeLanguage() {
+      const locale = this.$getLocale() === 'zh' ? 'en' : 'zh';
+      this.$setLocale(locale);
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Hello App!</h1>
+    <h1>{{ $t('hello') }}</h1>
 		<el-button>测试</el-button>
     <router-view></router-view>
   </div>
