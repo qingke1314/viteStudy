@@ -1,0 +1,15 @@
+.DS_Stor
+node_modules/
+dist/
+.vscode/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.idea/
+config/index.js
+/.scannerwork
+/*.lock
+/static/util/pdfjs/viewer.html
+package/*
