@@ -399,6 +399,7 @@
 /* BEM
  -------------------------- */
 .el-button {
+  border-radius: 0;
   display: inline-block;
   line-height: 1;
   white-space: nowrap;
@@ -421,18 +422,18 @@
   -ms-user-select: none;
   padding: 12px 20px;
   font-size: 14px;
-  border-radius: 4px; }
+}
   .el-button + .el-button {
     margin-left: 10px; }
   .el-button.is-round {
     padding: 12px 20px; }
   .el-button:hover, .el-button:focus {
-    color: red;
-    border-color: #ffb3b3;
-    background-color: #ffe6e6; }
+    color: var(--primaryColor);
+    border-color: var(--primaryColor30);
+    background-color: var(--fillColor); }
   .el-button:active {
-    color: #e60000;
-    border-color: #e60000;
+    color: var(--primaryColor90);
+    border-color: var(--primaryColor90);
     outline: none; }
   .el-button::-moz-focus-inner {
     border: 0; }
@@ -440,16 +441,16 @@
     margin-left: 5px; }
   .el-button.is-plain:hover, .el-button.is-plain:focus {
     background: #FFFFFF;
-    border-color: red;
-    color: red; }
+    border-color: var(--primaryColor);
+    color: var(--primaryColor); }
   .el-button.is-plain:active {
     background: #FFFFFF;
-    border-color: #e60000;
-    color: #e60000;
+    border-color: var(--primaryColor90);
+    color: var(--primaryColor90);
     outline: none; }
   .el-button.is-active {
-    color: #e60000;
-    border-color: #e60000; }
+    color: var(--primaryColor90);
+    border-color: var(--primaryColor90); }
   .el-button.is-disabled, .el-button.is-disabled:hover, .el-button.is-disabled:focus {
     color: #C0C4CC;
     cursor: not-allowed;
@@ -483,42 +484,42 @@
     padding: 12px; }
   .el-button--primary {
     color: #FFFFFF;
-    background-color: red;
-    border-color: red; }
+    background-color: var(--primaryColor);
+    border-color: var(--primaryColor); }
     .el-button--primary:hover, .el-button--primary:focus {
-      background: #ff3333;
-      border-color: #ff3333;
+      background: var(--primaryColor90);
+      border-color: var(--primaryColor90);
       color: #FFFFFF; }
     .el-button--primary:active {
-      background: #e60000;
-      border-color: #e60000;
+      background: var(--primaryColor90);
+      border-color: var(--primaryColor90);
       color: #FFFFFF;
       outline: none; }
     .el-button--primary.is-active {
-      background: #e60000;
-      border-color: #e60000;
+      background: var(--primaryColor90);
+      border-color: var(--primaryColor90);
       color: #FFFFFF; }
     .el-button--primary.is-disabled, .el-button--primary.is-disabled:hover, .el-button--primary.is-disabled:focus, .el-button--primary.is-disabled:active {
       color: #FFFFFF;
-      background-color: #ff8080;
-      border-color: #ff8080; }
+      background-color: var(--fillColor);
+      border-color: var(--fillColor); }
     .el-button--primary.is-plain {
-      color: red;
+      color: var(--primaryColor);
       background: #ffe6e6;
-      border-color: #ff9999; }
+      border-color: var(--fillColor); }
       .el-button--primary.is-plain:hover, .el-button--primary.is-plain:focus {
-        background: red;
-        border-color: red;
+        background: var(--primaryColor);
+        border-color: var(--primaryColor);
         color: #FFFFFF; }
       .el-button--primary.is-plain:active {
-        background: #e60000;
-        border-color: #e60000;
+        background: var(--primaryColor90);
+        border-color: var(--primaryColor90);
         color: #FFFFFF;
         outline: none; }
       .el-button--primary.is-plain.is-disabled, .el-button--primary.is-plain.is-disabled:hover, .el-button--primary.is-plain.is-disabled:focus, .el-button--primary.is-plain.is-disabled:active {
-        color: #ff6666;
-        background-color: #ffe6e6;
-        border-color: #ffcccc; }
+        color: var(--primaryColor30);
+        background-color: var(--fillColor);
+        border-color: var(--primaryColor30); }
   .el-button--success {
     color: #FFFFFF;
     background-color: #67C23A;
@@ -674,7 +675,7 @@
   .el-button--medium {
     padding: 10px 20px;
     font-size: 14px;
-    border-radius: 4px; }
+    border-radius: 0; }
     .el-button--medium.is-round {
       padding: 10px 20px; }
     .el-button--medium.is-circle {
@@ -682,7 +683,7 @@
   .el-button--small {
     padding: 9px 15px;
     font-size: 12px;
-    border-radius: 3px; }
+    border-radius: 0; }
     .el-button--small.is-round {
       padding: 9px 15px; }
     .el-button--small.is-circle {
@@ -690,23 +691,23 @@
   .el-button--mini {
     padding: 7px 15px;
     font-size: 12px;
-    border-radius: 3px; }
+    border-radius: 0; }
     .el-button--mini.is-round {
       padding: 7px 15px; }
     .el-button--mini.is-circle {
       padding: 7px; }
   .el-button--text {
     border-color: transparent;
-    color: red;
+    color: var(--primaryColor);
     background: transparent;
     padding-left: 0;
     padding-right: 0; }
     .el-button--text:hover, .el-button--text:focus {
-      color: #ff3333;
+      color: var(--primaryColor90);
       border-color: transparent;
       background-color: transparent; }
     .el-button--text:active {
-      color: #e60000;
+      color: var(--primaryColor90);
       border-color: transparent;
       background-color: transparent; }
     .el-button--text.is-disabled, .el-button--text.is-disabled:hover, .el-button--text.is-disabled:focus {

@@ -13,9 +13,10 @@
   "description": "",
   "dependencies": {
     "babel-plugin-component": "^1.1.1",
-    "element-theme": "^2.0.1",
-    "element-theme-chalk": "^2.15.14",
+    "cors": "^2.8.5",
     "element-ui": "^2.15.14",
+    "express": "^5.0.0-beta.2",
+    "jsonwebtoken": "^9.0.2",
     "sass": "^1.83.0",
     "sass-loader": "^16.0.4",
     "vite": "^3.2.11",

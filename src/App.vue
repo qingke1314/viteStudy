@@ -1,9 +1,5 @@
 <template>
-  <div>
-    <h1>{{ $t('hello') }}</h1>
-		<el-button>测试</el-button>
-    <router-view></router-view>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script>

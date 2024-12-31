@@ -9,7 +9,7 @@ function kebabCase(key) {
 function getSideEffects4(partialName, options) {
   const { importStyle = "css" } = options;
   if (!importStyle)
-    return;               
+    return;
   if (importStyle === "sass") {
     return [
       "~theme/base.scss",
@@ -54,7 +54,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': '/src',
-      '~theme': '/theme'
+      '~theme': '/src/theme'
     }
   },
   optimizeDeps: {
