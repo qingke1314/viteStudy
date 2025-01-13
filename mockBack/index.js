@@ -2,29 +2,17 @@ import express from 'express'; // express框架
 import jwt from 'jsonwebtoken'; // 引入jwt模块
 import secretKeyInstance, { decryptPassword } from './secretKey.js';
 import validMap from './validUser.json' assert { type: 'json' };
-import cors from 'cors';
 
 const server = express();
 const secretKey = secretKeyInstance.getSecretKey();
 
-const whitelist = ['http://localhost:5173'];
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin)!== -1 ||!origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('不允许的跨域请求'));
-    }
-  }
-};
-server.use(cors(corsOptions));
 server.use(express.json());
 // 模拟登录接口
-server.post('/login', (req, res) => {
+server.post('/gateway/login', (req, res) => {
   const { username, password } = req.body;
   const decryptPwd = decryptPassword(password);
   // 解密后跟数据库原密码一致
-  if (decryptPwd === validMap[username]) {
+  if (Object.keys(validMap).includes(username) && decryptPwd === validMap[username]) {
     const token = jwt.sign({ username }, secretKey, { expiresIn: '1h' });
     res.json({ success: true, token });
   } else {

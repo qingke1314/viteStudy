@@ -12,13 +12,13 @@ function getSideEffects4(partialName, options) {
     return;
   if (importStyle === "sass") {
     return [
-      "~theme/base.scss",
-      `~theme/${partialName}.scss`
+      "@/theme/base.scss",
+      `@/theme/${partialName}.scss`
     ];
   } else {
     return [
-      "~theme/base.css",
-      `~theme/${partialName}.css`
+      "@/theme/base.css",
+      `@/theme/${partialName}.css`
     ];
   }
 }
@@ -53,8 +53,15 @@ export default defineConfig({
 	],
   resolve: {
     alias: {
-      '@': '/src',
-      '~theme': '/src/theme'
+      '@': '/src'
+    }
+  },
+  server: {
+    proxy: {
+      '/gateway': {
+        target: 'http://localhost:3000/',
+        changeOrigin: true,
+      }
     }
   },
   optimizeDeps: {

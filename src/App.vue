@@ -1,5 +1,8 @@
 <template>
-  <router-view></router-view>
+  <div>
+    <el-button v-if="false"></el-button>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>

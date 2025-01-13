@@ -2,16 +2,29 @@
   <div>
     <div style="color: red;">{{ messageArr }}</div>
     <i class="icon-all primaryColor"></i>
-    <el-button type="primary" @click="handleClick">push</el-button>
+    <el-button>push</el-button>
     <el-button @click="handleChange">change</el-button>
     <el-button @click="handleChangeLanguage">修改语言包</el-button>
     <el-button @click="handleChangeTheme">修改主题</el-button>
     <el-header></el-header>
-    <el-main></el-main>
+    <el-main>
+      <div>1234</div>
+      <el-button>saaS</el-button>
+      <el-carousel height="150px">
+        <el-carousel-item v-for="item in 4" :key="item">
+          <h3 class="small">{{ item }}</h3>
+        </el-carousel-item>
+      </el-carousel>
+      <el-tabs>
+        <el-tab-pane label="用户管理" name="first">用户管理</el-tab-pane>
+        <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+        <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
+        <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
+      </el-tabs>
+    </el-main>
   </div>
 </template>
 <script>
-
 import { mapActions } from 'vuex';
 export default {
   data() {

@@ -1,0 +1,1 @@
+import{n as r}from"./index.30e7ece8.js";const _={};var s=function(){var n=this,e=n._self._c;return n._self._setupProxy,e("div",[e("router-view")],1)},t=[],o=r(_,s,t,!1,null,null,null,null);const c=o.exports;export{c as default};
