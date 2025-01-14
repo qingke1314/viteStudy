@@ -8,12 +8,14 @@ const theme = {
     --primaryColor90: rgba(64, 160, 255, 0.9);
     --primaryColor30: rgba(64, 160, 255, 0.3);
     --fillColor: rgba(64, 160, 255, 0.1);
+    --primaryColorDeep: rgb(49, 160, 255);
   }`,
   red: `:root {
     --primaryColor: rgba(255, 0, 0);
     --primaryColor90: rgba(255, 0, 0, 0.9);
     --primaryColor30: rgba(255, 0, 0, 0.3);
     --fillColor: rgba(255, 0, 0, 0.1);
+    --primaryColorDeep: rgb(233 0 0);
   }`
 };
 /**

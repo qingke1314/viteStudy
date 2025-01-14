@@ -1,0 +1,28 @@
+[
+  {
+    "path": "/home",
+    "name": "Home",
+    "icon": "icon-box-fill",
+    "label": "首页"
+  },
+  {
+    "path": "/",
+    "name": "VueTest",
+    "icon": "",
+    "label": "VUE测试块",
+    "children": [
+      {
+        "path": "/any",
+        "name": "Anything",
+        "icon": "icon-chart-relation",
+        "label": "随笔"
+      },
+      {
+        "path": "/vueTest",
+        "name": "VueTest",
+        "icon": "icon-terminal",
+        "label": "测试"
+      }
+    ]
+  }
+]

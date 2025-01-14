@@ -9,7 +9,7 @@ fetch.interceptors.request.use(
   config => {
     config.headers['Content-Type'] = 'application/json';
     if(getToken()) {
-      config.headers.AccessToken = getToken();
+      config.headers['access_token'] = getToken();
     }
     return config;
   }
@@ -26,9 +26,9 @@ fetch.interceptors.response.use(
     if (error.response) {
       // 服务器返回了状态码，但状态码不在 2xx 范围内
       console.log('错误状态码:', error.response.status);
-      if (error.response.status === 401) {
+      if ([401, 403].includes(error.response.status)) {
         // 例如，未授权，跳转到登录页面
-        window.location.href = '/login';
+        window.location.href = '/#/login';
       }
     } else if (error.request) {
       // 发送了请求，但没有收到响应

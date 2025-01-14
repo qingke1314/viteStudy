@@ -6,4 +6,11 @@ export const handleLogin = data => {
     method: 'POST',
     data
   })
+};
+
+export const getMenuList = () => {
+  return fetch({
+    url: '/gateway/getMenu',
+    method: 'POST'
+  })
 }

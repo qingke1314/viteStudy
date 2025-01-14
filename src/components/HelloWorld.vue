@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <div style="color: red;">{{ messageArr }}</div>
+  <div style="padding: 12px;">
     <i class="icon-all primaryColor"></i>
     <el-button>push</el-button>
     <el-button @click="handleChange">change</el-button>
     <el-button @click="handleChangeLanguage">修改语言包</el-button>
     <el-button @click="handleChangeTheme">修改主题</el-button>
+    <el-button @click="handleLoginOut">退出登录</el-button>
     <el-header></el-header>
     <el-main>
       <div>1234</div>
@@ -25,7 +25,9 @@
   </div>
 </template>
 <script>
+import Cookies from 'js-cookie';
 import { mapActions } from 'vuex';
+
 export default {
   data() {
     return {
@@ -34,6 +36,12 @@ export default {
   },
   methods: {
     ...mapActions('configStore', ['changeTheme']),
+    handleLoginOut() {
+      Cookies.remove('access_token');
+      this.$router.push({
+        path: '/login'
+      })
+    },
     handleClick() {
       this.messageArr.push(Math.floor(Math.random() * 100))
     },
