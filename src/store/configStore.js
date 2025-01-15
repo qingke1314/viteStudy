@@ -5,7 +5,8 @@ export default {
   state: {
     config: {
       themeType: globalConfig.themeType || 'red'
-    }
+    },
+    collapse: true,
   },
   mutations: {
     setConfig(state, config) {
@@ -14,6 +15,10 @@ export default {
         ...config
       };
     },
+    setCollapse(state, collapse) {
+      const to = collapse ?? !state.collapse;
+      state.collapse = to;
+    }
   },
   actions: {
     /**
@@ -27,6 +32,9 @@ export default {
   getters: {
     getConfig(state) {
       return state.config;
+    },
+    getCollapse(state) {
+      return state.collapse;
     }
   }
 };

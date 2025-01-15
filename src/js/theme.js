@@ -5,16 +5,16 @@ import Vue from 'vue';
 const theme = {
   normal: `:root {
     --primaryColor: rgba(64, 160, 255);
-    --primaryColor90: rgba(64, 160, 255, 0.9);
-    --primaryColor30: rgba(64, 160, 255, 0.3);
-    --fillColor: rgba(64, 160, 255, 0.1);
-    --primaryColorDeep: rgb(49, 160, 255);
+    --primaryColor90: rgb(80 164 247);
+    --primaryColor30: rgb(171 213 255);
+    --fillColor: rgb(232 243 255);
+    --primaryColorDeep: rgb(17 137 255);
   }`,
   red: `:root {
     --primaryColor: rgba(255, 0, 0);
-    --primaryColor90: rgba(255, 0, 0, 0.9);
+    --primaryColor90: rgb(251 74 74);
     --primaryColor30: rgba(255, 0, 0, 0.3);
-    --fillColor: rgba(255, 0, 0, 0.1);
+    --fillColor: rgb(255 232 232);
     --primaryColorDeep: rgb(233 0 0);
   }`
 };

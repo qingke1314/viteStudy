@@ -9,6 +9,7 @@ import '@/theme/message.css';
 import '@/theme/message-box.css';
 import '@/theme/loading.css';
 import '@/theme/notification.css';
+import '@/theme/tooltip.css';
 /**
  * 这些是方法类，手动按需引入
  */

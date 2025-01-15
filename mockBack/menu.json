@@ -8,7 +8,7 @@
   {
     "path": "/",
     "name": "VueTest",
-    "icon": "",
+    "icon": "icon-all",
     "label": "VUE测试块",
     "children": [
       {

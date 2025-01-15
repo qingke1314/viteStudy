@@ -2,13 +2,14 @@
   <div>
     <template v-for="e in menuList">
       <el-submenu
+        popper-append-to-body
         v-if="e.children && e.children.length"
         :key="e.path"
         :index="e.path"
         :title="e.label"
       >
         <template slot="title">
-          <i :class="e.icon"></i>
+          <i style="marginRight: 8px" :class="[e.icon, 'primaryColor']"></i>
           <span slot="title">{{ e.label }}</span>
         </template>
         <deep-menu :menuList="e.children"></deep-menu>
@@ -19,7 +20,7 @@
         :index="e.path || e.url||''"
         :title="e.label"
       >
-        <i :class="e.icon"></i>
+        <i style="marginRight: 8px" :class="[e.icon, 'primaryColor']"></i>
         <span slot="title">{{ e.label }}</span>
       </el-menu-item>
     </template>
@@ -40,5 +41,5 @@ export default {
   },
 }
 </script>
-<style>
+<style scoped lang="scss">
 </style>

@@ -1,14 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Vue</title>
-    <script type="module" crossorigin src="/assets/index.30e7ece8.js"></script>
-    <link rel="stylesheet" href="/assets/index.9b9c46fc.css">
-  </head>
-  <body>
-    <div id="app"></div>
-    
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aspect Ratio with ::after</title>
+    <style>
+      .container {
+            display: flex; /* 使用 Flexbox 布局 */
+            flex-wrap: wrap; /* 允许元素换行 */
+            gap: 10px; /* 元素之间的间隔 */
+        }
+      .parent {
+            position: relative;
+            width: 200px; /* 可调整父元素宽度 */
+            flex: 1 0 200px; /* 每个元素至少 200px 宽，可伸缩 */
+            overflow: hidden; /* 防止伪元素超出范围 */
+            background-color: lightblue;
+        }
+      .parent::after {
+            content: "";
+            display: block;
+            padding-top: 125%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="parent"></div>
+        <div class="parent"></div>
+        <div class="parent"></div>
+        <div class="parent"></div>
+        <div class="parent"></div>
+        <div class="parent"></div>
+    </div>
+</body>
 </html>

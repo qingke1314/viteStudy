@@ -1,4 +1,5 @@
 import axios from 'axios'; // 基于Promise的Http库，可用于node和浏览器，支持拦截器
+import Cookies from 'js-cookie';
 import { getToken } from '@/js/cookie';
 
 const fetch = axios.create({
@@ -27,6 +28,7 @@ fetch.interceptors.response.use(
       // 服务器返回了状态码，但状态码不在 2xx 范围内
       console.log('错误状态码:', error.response.status);
       if ([401, 403].includes(error.response.status)) {
+        Cookies.remove('access_token');
         // 例如，未授权，跳转到登录页面
         window.location.href = '/#/login';
       }

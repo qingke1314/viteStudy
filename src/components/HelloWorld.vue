@@ -3,9 +3,6 @@
     <i class="icon-all primaryColor"></i>
     <el-button>push</el-button>
     <el-button @click="handleChange">change</el-button>
-    <el-button @click="handleChangeLanguage">修改语言包</el-button>
-    <el-button @click="handleChangeTheme">修改主题</el-button>
-    <el-button @click="handleLoginOut">退出登录</el-button>
     <el-header></el-header>
     <el-main>
       <div>1234</div>
@@ -25,7 +22,6 @@
   </div>
 </template>
 <script>
-import Cookies from 'js-cookie';
 import { mapActions } from 'vuex';
 
 export default {
@@ -36,12 +32,6 @@ export default {
   },
   methods: {
     ...mapActions('configStore', ['changeTheme']),
-    handleLoginOut() {
-      Cookies.remove('access_token');
-      this.$router.push({
-        path: '/login'
-      })
-    },
     handleClick() {
       this.messageArr.push(Math.floor(Math.random() * 100))
     },
@@ -54,21 +44,6 @@ export default {
       // this.messageArr.splice(0, 1) // 生效
       // this.messageArr.length = 1 // 不生效
     },
-    /**
-     * 修改语言包
-     */
-    handleChangeLanguage() {
-      const locale = this.$getLocale() === 'zh' ? 'en' : 'zh';
-      this.$setLocale(locale);
-    },
-    /**
-     * 修改主题
-     */
-    handleChangeTheme() {
-      const theme = this.$store.getters['configStore/getConfig'].themeType;
-      this.$store.dispatch('configStore/changeTheme', theme === 'red' ? 'normal' :'red')
-      // 等价于 this.changeTheme(theme === 'red' ? 'normal' : 'red');
-    }
   }
 }
 </script>

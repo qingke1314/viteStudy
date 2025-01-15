@@ -1,6 +1,6 @@
 import Vue from 'vue';
-import './js/theme.js';
 import './js/globalConfig.js';
+import './js/theme.js';
 import App from './App.vue';
 import router from './router/index';
 import store from './store';
