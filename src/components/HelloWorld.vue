@@ -5,7 +5,7 @@
     <el-button @click="handleChange">change</el-button>
     <el-header></el-header>
     <el-main>
-      <div>1234</div>
+      <div @click="handleTest">1234</div>
       <el-button>saaS</el-button>
       <el-carousel height="150px">
         <el-carousel-item v-for="item in 4" :key="item">
@@ -23,6 +23,7 @@
 </template>
 <script>
 import { mapActions } from 'vuex';
+import store from '@/store/index';
 
 export default {
   data() {
@@ -44,6 +45,9 @@ export default {
       // this.messageArr.splice(0, 1) // 生效
       // this.messageArr.length = 1 // 不生效
     },
+    handleTest() {
+      console.log(this.$store, store);
+    }
   }
 }
 </script>
