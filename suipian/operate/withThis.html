@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<body>
+  <div>
+    不要混淆了作用域和this, 详见foo1
+  </div>
+</body>
+
+<script>
+  /**
+   * this规则1：凡是独立调用，this均指向window(浏览器)/global(node)
+   */
+  function foo1() {
+    console.log(this.a, a, 'out'); // 2 undefined
+    var a = 3; // 变量提升
+    function b() {
+      console.log(this.a, a, 'in'); // 2 3
+    }
+    b();
+  }
+  var a = 2;
+  foo1(); // 独立调用
+</script>
+<script>
+  /**
+   * this规则2：上下文环境会隐式绑定
+  */
+  function foo2() {
+    console.log(this.value)
+  }
+  var obj = {
+    value: 2,
+    foo2: foo2
+  }
+  obj.foo2(); // 2
+</script>
+<script>
+  /**
+   * this规则3： 隐式丢失
+  */
+  function foo3() {
+    console.log(this.value)
+  }
+  var obj = {
+    value: 'obj',
+    foo3: foo3
+  }
+  function runFn(fn) { // 形参是隐式赋值
+    var value = 'runFn'
+    fn && fn()
+  }
+  var value = 'window'
+  runFn(obj.foo3);
+</script>

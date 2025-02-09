@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<head>
+</head>
+  <body>
+    <div style="height: 3000px">
+    <div class="box"></div>
+    </div>
+  </body>
+  <script>
+/**
+ // !碰到宏任务微任务不要想当然，拿着队列自己去画。
+ */
+console.log('---主线程1---');//第一轮主线程
+setTimeout(() => {
+  console.log('宏任务1');  // 将回调代码放入个宏任务队列，第二轮宏任务执行
+}, 0);
+new Promise((resolve, reject) => {
+  console.log('---主线程2---');//第一轮微任务同步执行
+  resolve()
+}).then(()=>{
+  console.log('微任务1'); // 将回调代码放入微任务队列，第一轮宏任务执行完后立即执行
+});
+console.log('主线程3');//第一轮主线程结束
+
+
+setTimeout(() => {
+  console.log('宏任务2-主线程1');
+  setTimeout(() => {
+    console.log('宏任务2-宏任务1')
+  }, 0);
+  new Promise(resolve => {
+    resolve();
+    console.log('宏任务2-主线程2');
+  }).then(() => {
+    console.log('宏任务2-微任务1')
+  })
+  console.log('宏任务2-主线程3')
+}, 0);
+setTimeout(() => {
+  console.log('宏任务3-主线程1')
+}, 0);
+  </script>
+
+

@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'MyFont';
+  src: url('./assets/font/FZMWFont.ttf');
+  font-style: normal;
+}
+.hello {
+  color: green;
+  font-size: 20px;
+  font-family: 'MyFont';
+}

@@ -1,0 +1,16 @@
+.content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: space-between;
+  padding: 0 20px;
+  .contentRight {
+    display: flex;
+    .icon {
+      cursor: pointer;
+    }
+    .userName {
+      margin-left: 8px;
+    }
+  }
+}

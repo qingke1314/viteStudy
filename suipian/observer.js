@@ -10,6 +10,11 @@ function defineReactive(data, key, val) {
   observe(val);
   var dep = new Dep();
   Object.defineProperty(data, key, {
+    /**
+     ** 每个变量都有一个依赖收集实例，
+     ** getter触发时，根据Dep类的静态变量target是否绑定对象来将该对象丢进订阅队列中（即想订阅，就在读取的时候将Dep类的target指向自己）
+     ** setter触发时，会通知所有订阅者
+     */
     enumerable: true,
     configurable: true,
     get: function() {

@@ -1,0 +1,27 @@
+<body>
+  <div>1</div>
+</body>
+<script>
+  var start = null;
+  function countTime() {
+    setTimeout(() => {
+      console.log(new Date().getTime());
+      countTime();
+    }, 1000);
+  }
+  function countTimeWithAnimation(time) {
+    if(!start) {
+      start = time;
+    }
+    if((time - start) % 1000 === 1) {
+      console.log(time);
+    }
+    console.log(start, time - start);
+    requestAnimationFrame(countTimeWithAnimation);
+  }
+// countTime();
+// setInterval(() => {
+//   console.log(new Date().getTime());
+// }, 1000);
+requestAnimationFrame(countTimeWithAnimation)
+</script>

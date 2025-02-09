@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      const boxDom = document.querySelector(".box");
+      const obj = { name: "test", age: 20 };
+
+      const wm = new WeakMap();
+      let activeEffect = null;
+
+      // 触发依赖收集
+      function effect(fn) {
+        activeEffect = fn;
+        fn();
+      }
+
+      function reactive(obj) {
+        return new Proxy(obj, {
+          get(target, key) {
+            let res = target[key];
+            track(target, key); // 依赖收集
+            return res;
+          },
+          set(target, key, value) {
+            target[key] = value;
+            trigger(target, key); // 触发依赖
+            return true;
+          },
+        });
+      }
+      // weakMap => Map => Set 结构进行依赖收集
+      function track(target, key) {
+        if (activeEffect) {
+          let map = wm.get(target);
+          if (!map) {
+            map = new Map();
+            wm.set(target, map);
+          }
+
+          let deps = map.get(key);
+          if (!deps) {
+            deps = new Set();
+            map.set(key, deps);
+          }
+
+          deps.add(activeEffect);
+          activeEffect = null;
+        }
+      }
+      // 根据 target 找到对应的 deps 取出执行收集的副作用函数
+      function trigger(target, key) {
+        const map = wm.get(target);
+        if (!map) return;
+        const deps = map.get(key);
+        if (!deps) return;
+        for (const effect of deps) {
+          effect();
+        }
+      }
+      const objProxy = reactive(obj);
+
+      // 手动执行副作用函数触发依赖收集
+      effect(() => {
+        boxDom.textContent = objProxy.name;
+        console.log("更改 DOM 内容");
+      });
+    </script>
+  </body>
+</html>
+

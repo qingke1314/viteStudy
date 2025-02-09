@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div id="container" style="background-color: red;">xxxxx</div>
+    <div>tst</div>
+    <script type="text/javascript">
+      var container = document.getElementById('container');
+      
+      Promise.resolve().then(() => {
+        const color = container.style.backgroundColor;
+        console.log(color + 'promise', 'promise');
+      });
+      setTimeout(() => {
+        const color2 = container.style.backgroundColor;
+        console.log(color2 + 'promise', 'setTimeout');
+      })
+      container.style.backgroundColor = 'blue';
+    </script>
+  </body>
+</html>

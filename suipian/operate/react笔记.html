@@ -1,0 +1,28 @@
+<!DOCTYPE html>  
+<html>  
+  <head>  
+    <meta charset="UTF-8">  
+    <title>Draw a Star</title>  
+  </head>  
+  <body>  
+    <canvas id="myCanvas" width="500" height="500"></canvas>  
+    <script>  
+      var canvas = document.getElementById("myCanvas");  
+      var ctx = canvas.getContext("2d");  
+        
+      ctx.beginPath();  
+      ctx.moveTo(250, 250);  
+        
+      for (var i = 0; i < 5; i++) {  
+        var angle = i * Math.PI * 2 / 5;  
+        var x = 250 + 200 * Math.cos(angle);  
+        var y = 250 + 200 * Math.sin(angle);  
+        ctx.lineTo(x, y);  
+      }  
+        
+      ctx.closePath();  
+      ctx.strokeStyle = "#f00";  
+      ctx.stroke();  
+    </script>  
+  </body>  
+</html>

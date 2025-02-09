@@ -1,0 +1,34 @@
+.home {
+  display: flex;
+  height: calc(100vh - 48px);
+}
+.head {
+  height: 48px;
+}
+.leftContent {
+  width: 280px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.5s;
+  display: flex
+}
+.content {
+  padding: 16px;
+  transition: all 0.5s;
+}
+.direct {
+  width: 14px;
+  .directBox {
+    cursor: pointer;
+    height: calc(100vh - 68px);
+    border-radius: 10px;
+    background: white;
+    margin: 10px 2px;
+    width: 10px;
+    align-items: center;
+    display: flex;
+    .icon {
+      font-size: 10px;
+    }
+  }
+}

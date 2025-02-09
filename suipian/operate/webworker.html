@@ -1,0 +1,9 @@
+<body>
+  <div>11</div>
+</body>
+<script>
+  let worker = new Worker('./test.worker.js');
+  worker.onmessage = e => {
+    console.log('收到消息：', e.data);
+  };
+</script>

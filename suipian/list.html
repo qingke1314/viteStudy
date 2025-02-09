@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      font-size: 1014.93px;
+    }
+    .box {
+      width: calc(100% - 0.6rem);
+      margin: 0.2rem 0.3rem 0.6rem 0.3rem;
+      border-radius: 10px;
+      background: #fff;
+    }
+    .item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.25rem 0 0.35rem 0;
+        border-bottom: 1px solid #eee;
+        border-radius: 4px;
+        background: #fff;
+      }
+      .item-left {
+          width: 3.7rem;
+          flex: 0.55;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .item-right {
+          width: 2.9rem;
+          height: 1.7rem;
+          flex: 0.4;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+        }
+        .img {
+            width: 100%;
+            border-radius: 0.1rem;
+            width: 2.9rem;
+            height: 1.7rem;
+          }
+        .item-left-text {
+            font-size: 0.3102rem;
+            width: 100%;
+            line-height: 0.4rem;
+            margin-left: 0.1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            color: #000;
+            font-weight: 500;
+            height: 1.2rem;
+            overflow: hidden;
+          }
+          .item-left-bottom {
+            display: flex;
+            font-size: 0.18rem;
+            width: 100%;
+            margin-top: 0.2rem;
+            align-items: center;
+          }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="item">
+      <div class="item-left">
+        <div class="item-left-text">描述</div>
+        <div class="item-left-bottom">
+          <div class="time">07-08</div>
+          <div class="author">zjb</div>
+        </div>
+      </div>
+      <div class="item-right">
+        <img class="img" src="https://img-plus.fjtv.net/20240508c52e2dcc7c6cf89751c5b8f812d8e2c7.jpg" />
+      </div>
+    </div>
+    <!-- <div class="item">
+      <div class="item-left">
+        <div>描述</div>
+        <div>
+          <div class="time">07-08</div>
+          <div class="author">zjb</div>
+        </div>
+      </div>
+      <img class="item-right" src="https://img-plus.fjtv.net/20240508c52e2dcc7c6cf89751c5b8f812d8e2c7.jpg" />
+    </div>
+    <div class="item">
+      <div class="item-left">
+        <div>描述</div>
+        <div>
+          <div class="time">07-08</div>
+          <div class="author">zjb</div>
+        </div>
+      </div>
+      <img class="item-right" src="https://img-plus.fjtv.net/20240508c52e2dcc7c6cf89751c5b8f812d8e2c7.jpg" />
+    </div> -->
+  </div>
+</body>
+</script>
+</html>

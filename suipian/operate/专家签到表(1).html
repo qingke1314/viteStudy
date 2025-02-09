@@ -1,0 +1,82 @@
+﻿<meta http-equiv="content-type" content="text/html;charset=utf-8"><!--
+【标签版本】
+version: V6.1.BJS.1
+-->
+<style type="text/css">
+    @media print {a
+        /*打印规范：
+           宋体，1.5行高。
+           大标题用h2标签，字号为34号加粗,对应WORD为二号
+           一级标题用h3标签，字号为24号加粗，对应WORD为小三号
+           二级标题用h4标签，字号为21号加粗。对应WORD为四号
+           三级标题用h5标签，字号为18号加粗。对应WORD为小四号
+           普通文字为18号字体，对应WORD为小四号
+           表格标题为加粗，表格字号为16号字体；考虑内容多，用16号，对应WORD为五号
+           标题加粗，自己改为<strong></strong>或者加样式。
+        */
+        @page {
+          margin: 35.5mm 23.3mm 34mm 25mm;
+        }
+    #printArea{font-family: '宋体'; line-height:1.5; font-size: 14px;text-align: justify; padding: 0;margin: 0;}
+    #printArea *{padding:0; margin:0;}
+    #printArea .focuscontent{ color:#337ab7;}
+    #printArea h2{font-size: 22px; text-align: center; margin: 0 0 20px 0;}
+    #printArea h3{font-size: 18px; font-weight: normal;}
+    #printArea h4{font-size: 16px; font-weight: normal;}
+    #printArea h5{font-size: 15px;font-weight: normal;}
+    #printArea p{ text-indent: 28px; font-size: 14px;}
+    #printArea table{font-size: 14px;border-collapse: collapse; border-spacing: 0; width:100%;margin:10px 0;}
+    #printArea table tr td{border-collapse: collapse; border:1px solid #333;text-align: center;padding: 5px 8px;}
+    #printArea table tr th{ font-weight: bold; text-align: center; border:1px solid #333;padding: 5px 8px;}
+    #printArea table tr{height: 32px;}
+    #easyreport th td{ border: 0.5px solid black;text-align: center;}
+    #easyreport {width: 100%;border-collapse:collapse;page-break-inside:avoid}
+    #easyreport table{table-layout:fixed;}
+    .myUnprotect{position:relative;width:25%;height:100px;display:inline-block;margin-bottom:100px;page-break-inside: avoid;}
+    .inlineProotect{left:10px;position:absolute}
+    .signCss{display:flex;flex-wrap:wrap;height: 200px;}  
+    #tablepage {page-break-inside:avoid;}
+    #printArea thead {
+      display: table-row-group;
+    }
+    #printArea tr {
+      page-break-inside: avoid;
+    }
+    @-moz-document url-prefix() {
+      #printArea tr {
+        page-break-before: unset !important;
+        page-break-after:unset !important;
+      }
+    }
+    }
+</style>
+<div id="printArea" class="____protect____">
+    <h2><strong>评委签到表</strong></h2>
+	<h4>项目名称：<span th:text="${commonData.evalResultDataBaseVo.bidcoreProcess.projectName}"></span></h4>
+	<h4>项目编号：<span th:text="${commonData.evalResultDataBaseVo.bidcoreProcess.projectCode}"></span></h4>
+	<h4>标段/包：<span th:text="${commonData.evalResultDataBaseVo.bidcoreProcess.projectCode}"></span></h4>
+    <p style="float: right;"><strong>评审日期：</strong>[[${commonData.evalResultDataSpecialVo.date}]]</p>
+    <table border="1" width="768">
+        <tr>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>工作单位</th>
+            <th>部门</th>
+            <th>专业</th>
+            <th>身份证号</th>
+            <th>联系电话</th>
+            <th>备注</th>
+        </tr>
+        <tr th:each="expertInform, expertInformStat : ${commonData.evalResultDataSpecialVo.evalExpertInformDtoList}">
+			<td th:text="${expertInformStat.index+1}"></td>
+			<td th:text="${expertInform.expertName}"></td>
+			<td th:text="${#strings.defaultString(expertInform.expertWorkUnit, '/')}"></td>
+			<td th:text="${#strings.defaultString(expertInform.department, '/')}"></td>
+			<td th:text="${#strings.defaultString(expertInform.reviewClassificationName, '/')}"></td>
+			<td th:text="${expertInform.expertIdCode}"></td>
+			<td th:text="${#strings.defaultString(expertInform.expertMobile, '/')}"></td>
+			<td th:text="${expertInform.expertStatusName}"></td>
+        </tr>
+    </table>  
+</div>
+

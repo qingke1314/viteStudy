@@ -1,0 +1,82 @@
+<body>
+  <div>1</div>
+</body>
+<script>
+// 指针，指向当前所有hook
+let workInProgressHook = null;
+// react最多俩fiber树，当前屏幕内容的和内存中构建的
+let fiber = {
+  stateNode: App,
+  memoizedState: null, // hooks链表，初始为null
+};
+// 是否首次渲染完成
+let mounted = false;
+// 工厂模式为每个hook返回一个更新action即state的setter
+function dispatchAction(hook) {
+  return function (action) {
+    hook.action = action
+  }
+}
+
+function useState(initVal) {
+  let hook;
+  if (!mounted) {
+    hook = {
+      memoizedState: initVal,
+      action: null, // setter
+      next: null
+    }
+    if (!fiber.memoizedState) {
+      fiber.memoizedState = hook;
+    } else {
+      workInProgressHook.next = hook;
+    }
+    workInProgressHook = hook;
+  } else {
+    hook = workInProgressHook;
+    workInProgressHook = workInProgressHook.next;
+  }
+  // 状态更新，拿到 current hook，调用 action 函数，更新到最新 state
+  let baseState = hook.memoizedState
+  // 执行 update
+  if (hook.action) {
+    // 更新最新值
+    let action = hook.action
+    // 如果是 setNum(num=>num+1) 形式
+    if (typeof action === 'function') {
+      baseState = action(baseState)
+    } else {
+      baseState = action
+    }
+    // 清空 action
+    hook.action = null
+  }
+  // 更新最新值
+  hook.memoizedState = baseState
+  // 返回最新值 baseState、dispatchAction
+  return [baseState, dispatchAction(hook)];
+}
+// APP组件
+function App() {
+  const [num, setNum] = useState(0);
+  return {
+    onClick() {
+      console.log('num', num);
+      setNum(num + 1);
+    }
+  };
+}
+/**
+  * 模拟调度函数
+  */
+function schedule() {
+  workInProgressHook = fiber.memoizedState;
+  const app = fiber.stateNode();
+  mounted = true;
+  return app;
+}
+debugger
+schedule().onClick(); // 'num: ' 0
+schedule().onClick(); // 'num: ' 1
+schedule().onClick(); // 'num: ' 2
+</script>

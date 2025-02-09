@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+  <style>
+    body {
+      cursor: none;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: gray;
+      padding: 10px;
+      overflow: auto;
+    }
+    .son {
+      width: 50px;
+      height: 500px;
+    }
+    .mouse {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <img id="mouse" class="mouse" src="../../img/mouse.png" alt="" />
+  <div class="box">
+    <div class="son">aaa</div>
+  </div>
+</body>
+<script>
+  let box = document.getElementsByClassName('box')[0];
+  let son = document.getElementsByClassName('son')[0];
+  let foods = {};
+  function getTextNodes(node) {
+    let textNode = [];
+    const loop = (el) => {
+      if(el.nodeType === Node.TEXT_NODE) {
+        textNode.push(el);
+      }
+      if(el.childNodes.length > 1) {
+        for(let e of node.childNodes) {
+          loop(e)
+        }
+      }
+    }
+    console.log(node.childNodes)
+    loop(node);
+    return textNode;
+  };
+  // let texts = getTextNodes(box);
+  // if(texts) {
+  //   texts[0]?.insertData(0, 'xxxx') // inserData，在指定位置插入文本，只适用textNode和commonNode
+  // }
+  // let attributes = box.getAttribute('class') // box
+  // let attributes = box.getAttribute('style') // undefined
+  // box.setAttribute('style', 'width: 200px;') // 将宽度设置成了200px 可以设置没有的属性
+  // box.removeAttribute('style') 顾名思义
+  // window.confirm('这是提示');
+  // alert('这是警告')
+  // box.onscroll = function() {
+  //   console.log(box.scrollTop, box.scrollHeight) // scrollTop: 滚动条距顶部距离  scrollHeight：父子更高的高度 + 父元素padding
+  // }
+  let mousePic = document.getElementById('mouse');
+  let activeOpacity = 0.8;
+  let body = document.documentElement;
+  let overTime = 100;
+  body.style.cursor = 'none'
+  function setActiveMouse() {
+    let flag = true;
+    return function(y, x) {
+      let cloneMouse = null;
+      if(flag) {
+        cloneMouse = mousePic.cloneNode();
+        cloneMouse.style.top = y - 3 + 'px';
+        cloneMouse.style.left = x - 6 + 'px';
+        cloneMouse.style.opacity = activeOpacity;
+        flag = false;
+        setTimeout(() => {
+          flag = true;
+        }, 10)
+        setTimeout(() => {
+          body.removeChild(cloneMouse)
+        }, overTime)
+      }
+      return cloneMouse;
+    }
+  }
+  let mousePru = setActiveMouse();
+  document.addEventListener('mousemove', (e) => {
+    let mouse = mousePru(e.pageY, e.pageX);
+    if(mouse) {
+      body.appendChild(mouse);
+    }
+  })
+  let timer = null;
+  timer = setInterval(() => {
+    let food = document.createElement('div')
+    food.style.width = '20px';
+    food.style.height = '20px';
+    food.style.background = 'blue';
+    food.style.position = 'absolute';
+    food.style.left = Math.random() * body.offsetWidth + 'px';
+    food.style.top = Math.random() * body.offsetWidth + 'px';
+    food.onmouseenter = function() {
+      body.removeChild(food);
+      console.log('!!!')
+      overTime += 50;
+    }
+    body.appendChild(food);
+    foods[food.style.left + food.style.top] = food;
+  }, 500)
+</script>
