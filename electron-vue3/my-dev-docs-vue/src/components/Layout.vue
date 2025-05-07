@@ -2,19 +2,28 @@
   <el-container class="common-layout">
     <el-header class="common-header"></el-header>
     <el-container>
-      <el-aside width="200px" class="common-aside">
+      <el-aside :width="asideWidth" class="common-aside">
         <side-menu :menu-items="menuConfig" />
       </el-aside>
       <el-main class="common-main">
         <router-view />
       </el-main>
     </el-container>
-    <el-footer class="common-footer">Footer</el-footer>
+    <el-footer class="common-footer"></el-footer>
   </el-container>
 </template>
 
 <script setup>
+import { ref, computed } from "vue";
+import { storeToRefs } from "pinia";
+import { useLayoutStore } from "@/pinia/layout";
 import SideMenu from "./SideMenu.vue";
+
+const { isCollapse } = storeToRefs(useLayoutStore());
+
+const asideWidth = computed(() => {
+  return isCollapse.value ? "64px" : "200px";
+});
 
 // 假设 menuConfig 会从父组件传入，或者从 store 中获取
 //  为了演示，这里定义一个示例配置
@@ -23,39 +32,44 @@ const menuConfig = [
   {
     name: "首页",
     path: "/",
-    // icon: 'HomeFilled' // 假设你已经全局注册了 Element Plus 图标
+    icon: "HomeFilled", // 假设你已经全局注册了 Element Plus 图标
   },
   {
     name: "日志管理",
     path: "/logs",
-    // icon: 'Document'
+    icon: "Document",
+  },
+  {
+    name: "创意管理",
+    path: "/ideas",
+    icon: "Opportunity",
   },
   {
     name: "错题集",
     // path: '/errors', // 父菜单可以没有path，如果它仅用于展开
-    // icon: 'CollectionTag',
+    icon: "CollectionTag",
     children: [
       {
         name: "前端错题",
-        path: "/errors/frontend",
-        // icon: 'Tickets'
+        path: "/errors",
+        icon: "Tickets",
       },
-      {
-        name: "后端错题",
-        path: "/errors/backend",
-        // icon: 'DataLine'
-      },
+      // {
+      //   name: "后端错题",
+      //   path: "/errors/backend",
+      //   // icon: 'DataLine'
+      // },
     ],
   },
   {
     name: "配置项",
-    path: "/configurations",
-    // icon: 'Setting'
+    path: "/configs",
+    icon: "Setting",
   },
   {
     name: "总结回顾",
-    path: "/summary",
-    // icon: 'Memo'
+    path: "/summaries",
+    icon: "Memo",
   },
 ];
 
@@ -81,9 +95,11 @@ const menuConfig = [
     color: var(--el-text-color-primary);
   }
   .common-aside {
-    background-color: var(--el-color-primary-light-9);
+    transition: width 0.3s;
+    // background-color: var(--el-color-primary-light-9);
     // 确保侧边栏内容不会溢出，如果菜单很长，可以考虑滚动条
     overflow-y: auto;
+    overflow-x: hidden; /* 防止折叠时出现水平滚动条 */
   }
   .common-main {
     padding: 20px; // 给主内容区一些内边距
@@ -97,8 +113,17 @@ const menuConfig = [
     align-items: center;
     justify-content: center;
     color: var(--el-text-color-regular);
-    height: 40px; // 定义一个合适的高度
-    line-height: 40px;
+    height: 30px; // 定义一个合适的高度
+    line-height: 30px;
   }
+}
+.toggle-btn {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 50%;
+  left: 100px;
+  top: 60px;
 }
 </style>
