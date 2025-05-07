@@ -17,6 +17,8 @@
     "@vitejs/plugin-vue": "^5.0.4",
     "electron": "^20.3.8",
     "electron-builder": "^24.13.3",
+    "eslint": "^9.26.0",
+    "eslint-plugin-vue": "^10.1.0",
     "sass": "^1.87.0",
     "sass-loader": "^16.0.5",
     "typescript": "^5.2.2",
