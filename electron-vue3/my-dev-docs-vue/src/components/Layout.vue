@@ -14,15 +14,15 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
-import { storeToRefs } from "pinia";
-import { useLayoutStore } from "@/pinia/layout";
-import SideMenu from "./SideMenu.vue";
+import { ref, computed } from 'vue';
+import { storeToRefs } from 'pinia';
+import { useLayoutStore } from '@/pinia/layout';
+import SideMenu from './SideMenu.vue';
 
 const { isCollapse } = storeToRefs(useLayoutStore());
 
 const asideWidth = computed(() => {
-  return isCollapse.value ? "64px" : "200px";
+  return isCollapse.value ? '64px' : '200px';
 });
 
 // 假设 menuConfig 会从父组件传入，或者从 store 中获取
@@ -30,29 +30,41 @@ const asideWidth = computed(() => {
 // 在实际应用中，你应该从外部传入或在更高级别的地方定义
 const menuConfig = [
   {
-    name: "首页",
-    path: "/",
-    icon: "HomeFilled", // 假设你已经全局注册了 Element Plus 图标
+    name: '首页',
+    path: '/',
+    icon: 'HomeFilled', // 假设你已经全局注册了 Element Plus 图标
   },
   {
-    name: "日志管理",
-    path: "/logs",
-    icon: "Document",
-  },
-  {
-    name: "创意管理",
-    path: "/ideas",
-    icon: "Opportunity",
-  },
-  {
-    name: "错题集",
-    // path: '/errors', // 父菜单可以没有path，如果它仅用于展开
-    icon: "CollectionTag",
+    name: '日志管理',
+    icon: 'Document',
+    path: '/logs',
     children: [
       {
-        name: "前端错题",
-        path: "/errors",
-        icon: "Tickets",
+        name: '新建日志',
+        path: '/logs/add',
+        icon: 'DocumentAdd',
+      },
+      {
+        name: '日志列表',
+        path: '/logs/list',
+        icon: 'Files',
+      },
+    ],
+  },
+  {
+    name: '创意管理',
+    path: '/ideas',
+    icon: 'Opportunity',
+  },
+  {
+    name: '错题集',
+    // path: '/errors', // 父菜单可以没有path，如果它仅用于展开
+    icon: 'CollectionTag',
+    children: [
+      {
+        name: '前端错题',
+        path: '/errors',
+        icon: 'Tickets',
       },
       // {
       //   name: "后端错题",
@@ -62,14 +74,14 @@ const menuConfig = [
     ],
   },
   {
-    name: "配置项",
-    path: "/configs",
-    icon: "Setting",
+    name: '配置项',
+    path: '/configs',
+    icon: 'Setting',
   },
   {
-    name: "总结回顾",
-    path: "/summaries",
-    icon: "Memo",
+    name: '总结回顾',
+    path: '/summaries',
+    icon: 'Memo',
   },
 ];
 
@@ -102,7 +114,9 @@ const menuConfig = [
     overflow-x: hidden; /* 防止折叠时出现水平滚动条 */
   }
   .common-main {
-    padding: 20px; // 给主内容区一些内边距
+    overflow: hidden;
+    height: 100%;
+    padding: 12px; // 给主内容区一些内边距
     background-color: var(--el-bg-color-page);
   }
   .common-footer {
@@ -113,8 +127,8 @@ const menuConfig = [
     align-items: center;
     justify-content: center;
     color: var(--el-text-color-regular);
-    height: 30px; // 定义一个合适的高度
-    line-height: 30px;
+    height: 20px; // 定义一个合适的高度
+    line-height: 20px;
   }
 }
 .toggle-btn {

@@ -7,9 +7,9 @@ const routes = [
     component: () => import("../views/Home.vue"), // 暂时指向日志
   },
   {
-    path: "/logs",
-    name: "Logs",
-    component: () => import("../views/LogsView.vue"),
+    path: "/logs/add",
+    name: "LogsAdd",
+    component: () => import("../views/Logs/LogsAdd/index.vue"),
   },
   {
     path: "/errors",

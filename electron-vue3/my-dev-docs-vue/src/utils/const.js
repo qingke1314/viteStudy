@@ -6,14 +6,18 @@ import {
   CollectionTag,
   Opportunity,
   Tickets,
+  DocumentAdd,
+  Files,
 } from "@element-plus/icons-vue";
 
 export const iconMap = {
-  HomeFilled: HomeFilled,
-  Document: Document,
-  Setting: Setting,
-  Opportunity: Opportunity,
-  CollectionTag: CollectionTag,
-  Tickets: Tickets,
-  Memo: Memo,
+  HomeFilled,
+  Document,
+  Setting,
+  Opportunity,
+  CollectionTag,
+  Tickets,
+  Memo,
+  DocumentAdd,
+  Files,
 };
